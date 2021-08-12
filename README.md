@@ -1,6 +1,8 @@
-# vl53l1x_ros
+# vl53l1x_ros2
 
-This is STM [VL53L1X](https://www.st.com/en/imaging-and-photonics-solutions/vl53l1x.html) time-of-flight rangefinder driver for ROS. Tested on a Raspberry Pi 3 and 4 with CJMCU-531 board.
+This is STM [VL53L1X](https://www.st.com/en/imaging-and-photonics-solutions/vl53l1x.html) time-of-flight rangefinder driver for ROS2. Tested on a Raspberry Pi 3 and 4 with [CJMCU-531](https://ru.aliexpress.com/item/VL53L1X/32911692450.html) board.
+
+[This is in progress]
 
 The code is based on the [STM VL53L1X API library](https://www.st.com/content/st_com/en/products/embedded-software/proximity-sensors-software/stsw-img007.html).
 
@@ -14,7 +16,7 @@ Example of I²C connecting VL53L1X module to Raspberry Pi:
 
 ### From package
 
-For Raspberry Pi, there exist prebuilt Debian packages. For installation, get the package ([Noetic](http://packages.coex.tech/packages/buster/ros-noetic-vl53l1x/), [Melodic](http://coex.space/rpi-ros-melodic/pool/main/r/ros-melodic-vl53l1x/), [Kinetic](http://coex.space/rpi-ros-kinetic/pool/main/r/ros-kinetic-vl53l1x/)) to the Raspberry and install it with `dpkg -i <package-name>.deb`.
+For Raspberry Pi, there exist prebuilt Debian packages. For installation, [get the package](http://coex.space/rpi-ros-kinetic/pool/main/r/ros-kinetic-vl53l1x/) to the Raspberry and install it with `dpkg -i <package-name>.deb`.
 
 ### Manual
 
