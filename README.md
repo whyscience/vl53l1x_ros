@@ -20,7 +20,7 @@ Example of I²C connecting VL53L1X module to Raspberry Pi:
 
     ```bash
     cd ~/dev_ws/src
-    git clone https://github.com/mhl787156/vl53l1x_ros2.git
+    git clone https://github.com/whyscience/vl53l1x_ros.git
     ```
 
 2. Build the package:

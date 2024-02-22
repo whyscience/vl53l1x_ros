@@ -41,9 +41,9 @@ class VL53L1X_Node: public rclcpp::Node {
 		sensor_msgs::msg::Range range;
 		vl53l1x::msg::MeasurementData data;
 
-		int mode, i2c_bus, i2c_address;
-		double poll_rate, timing_budget, offset;
-		bool ignore_range_status;
+		int mode{}, i2c_bus{}, i2c_address{};
+		double poll_rate{}, timing_budget{}, offset{};
+		bool ignore_range_status{};
 		std::vector<int64_t> pass_statuses { VL53L1_RANGESTATUS_RANGE_VALID,
 										VL53L1_RANGESTATUS_RANGE_VALID_NO_WRAP_CHECK_FAIL,
 										VL53L1_RANGESTATUS_RANGE_VALID_MERGED_PULSE };
@@ -53,7 +53,7 @@ class VL53L1X_Node: public rclcpp::Node {
 
 		rclcpp::TimerBase::SharedPtr timer;
 
-		VL53L1_Dev_t dev;
+		VL53L1_Dev_t dev{};
 		VL53L1_Error dev_error;
 };
 
@@ -82,8 +82,8 @@ VL53L1X_Node::VL53L1X_Node() :
 		RCLCPP_INFO(this->get_logger(), "Pass Statuses set as default.");
 	}
 
-	this->range_pub = this->create_publisher<sensor_msgs::msg::Range>("range", 20);
-	this->data_pub = this->create_publisher<vl53l1x::msg::MeasurementData>("range_data", 20);
+	this->range_pub = this->create_publisher<sensor_msgs::msg::Range>("/vl53l1x/range", 20);
+	this->data_pub = this->create_publisher<vl53l1x::msg::MeasurementData>("/vl53l1x/range_data", 20);
 
 	if (this->timing_budget < 0.02 || this->timing_budget > 1) {
 		RCLCPP_FATAL(this->get_logger(), "Error: timing_budget should be within 0.02 and 1 s (%g is set)", this->timing_budget);
