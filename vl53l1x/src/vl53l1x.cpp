@@ -115,6 +115,10 @@ VL53L1X_Node::VL53L1X_Node() :
 	RCLCPP_INFO(this->get_logger(), "VL53L1X: Type: %u Version: %u.%u", device_info.ProductType,
 	          device_info.ProductRevisionMajor, device_info.ProductRevisionMinor);
 
+	RCLCPP_INFO(this->get_logger(), "set address to 0X31");
+	VL53L1_SetDeviceAddress(&this->dev, 0x31);	/* Change i2c address Left is now 0x62 and Dev1 */
+	return;
+
 	// Setup sensor
 	CHECK_STATUS(VL53L1_SetDistanceMode(&this->dev, mode));
 	CHECK_STATUS(VL53L1_SetMeasurementTimingBudgetMicroSeconds(&dev, round(timing_budget * 1e6)));

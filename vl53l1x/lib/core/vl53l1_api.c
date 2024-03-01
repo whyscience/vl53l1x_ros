@@ -742,7 +742,7 @@ VL53L1_Error VL53L1_GetPalState(VL53L1_DEV Dev, VL53L1_State *pPalState)
 /* End Group PAL General Functions */
 
 /* Group PAL Init Functions */
-VL53L1_Error VL53L1_SetDeviceAddress(VL53L1_DEV Dev, uint8_t DeviceAddress)
+VL53L1_Error VL53L1_SetDeviceAddress(VL53L1_DEV Dev, uint8_t DeviceAddress)//change address
 {
 	VL53L1_Error Status = VL53L1_ERROR_NONE;
 
