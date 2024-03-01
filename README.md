@@ -56,6 +56,8 @@ All parameters are optional. Check the [`launch`](https://github.com/okalachev/v
 
 * `~i2c_bus` (*int*) – I2C bus number (default: 1).
 * `~i2c_address` (*int*) – I2C address (default: 41 (i.e. 0x29)). (Note this may need to be given as a base 10 integer within launch files.)
+  * 默认0x52是写地址，0x53是读地址。有些人指定 7 位地址并将其称为 0x29。https://community.st.com/t5/imaging-sensors/vl53l1x-address-changing/td-p/162824
+  * i2cdetect -y -r 1, not i2cdetect -y 1
 * `~mode` (*int*) – distance mode, 1 = short, 2 = medium, 3 = long (default: 3).
 * `~timing_budget` (*double*) – timing budget for measurements, *s* (default: 0.1)
 * `~poll_rate` (*double*) – polling data rate, *Hz* (default: 100.0).
