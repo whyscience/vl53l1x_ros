@@ -102,7 +102,7 @@ VL53L1X_Node::VL53L1X_Node() :
 	// Init sensor
 	// VL53L1_Dev_t dev;
 	// VL53L1_Error dev_error;
-	VL53L1_software_reset(&this->dev);
+	//VL53L1_software_reset(&this->dev);
 	VL53L1_WaitDeviceBooted(&this->dev);
 	VL53L1_DataInit(&this->dev);
 	VL53L1_StaticInit(&this->dev);
