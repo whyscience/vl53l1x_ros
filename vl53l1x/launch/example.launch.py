@@ -14,6 +14,7 @@ def generate_launch_description():
                 'i2c_address': 41,  # 注意：0x29应该转换为十进制的41
                 'poll_rate': 100.0,
                 'ignore_range_status': False,
+                'change_address': False,
                 'timing_budget': 0.1,
                 'offset': 0.0,
                 'frame_id': '',

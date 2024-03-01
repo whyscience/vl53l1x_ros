@@ -44,6 +44,7 @@ class VL53L1X_Node: public rclcpp::Node {
 		int mode{}, i2c_bus{}, i2c_address{};
 		double poll_rate{}, timing_budget{}, offset{};
 		bool ignore_range_status{};
+		bool change_address = false;
 		std::vector<int64_t> pass_statuses { VL53L1_RANGESTATUS_RANGE_VALID,
 										VL53L1_RANGESTATUS_RANGE_VALID_NO_WRAP_CHECK_FAIL,
 										VL53L1_RANGESTATUS_RANGE_VALID_MERGED_PULSE };
@@ -70,6 +71,7 @@ VL53L1X_Node::VL53L1X_Node() :
 	this->get_parameter_or("i2c_address", this->i2c_address, 0x29);
 	this->get_parameter_or("poll_rate", this->poll_rate, 100.0);
 	this->get_parameter_or("ignore_range_status", this->ignore_range_status, false);
+	this->get_parameter_or("change_address", this->change_address, false);
 	this->get_parameter_or("timing_budget", this->timing_budget, 0.1);
 	this->get_parameter_or("offset", this->offset, 0.0);
 	this->get_parameter_or("frame_id", this->range.header.frame_id, std::string(""));
@@ -115,9 +117,12 @@ VL53L1X_Node::VL53L1X_Node() :
 	RCLCPP_INFO(this->get_logger(), "VL53L1X: Type: %u Version: %u.%u", device_info.ProductType,
 	          device_info.ProductRevisionMajor, device_info.ProductRevisionMinor);
 
-	RCLCPP_INFO(this->get_logger(), "set address to 0X31");
-	VL53L1_SetDeviceAddress(&this->dev, 0x31);	/* Change i2c address Left is now 0x62 and Dev1 */
-	return;
+	if(this->change_address){
+		RCLCPP_INFO(this->get_logger(), "set address to 0X31");
+		VL53L1_SetDeviceAddress(&this->dev, 0x31);	/* Change i2c address Left is now 0x62 and Dev1 */
+		return;
+	}
+
 
 	// Setup sensor
 	CHECK_STATUS(VL53L1_SetDistanceMode(&this->dev, mode));
